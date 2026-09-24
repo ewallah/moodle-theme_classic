@@ -2,6 +2,9 @@
 // Bootstrap variables
 //
 
+// Import default boost
+@import "../../boost/scss/preset/default.scss";
+
 // Prefix for all CSS variables
 $prefix: bs- !default;
 
