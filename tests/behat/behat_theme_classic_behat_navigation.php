@@ -27,9 +27,9 @@
 
 require_once(__DIR__ . '/../../../../lib/tests/behat/behat_navigation.php');
 
-use Behat\Mink\Exception\ExpectationException as ExpectationException;
-use Behat\Mink\Exception\ElementNotFoundException as ElementNotFoundException;
-use Behat\Mink\Exception\DriverException as DriverException;
+use Behat\Mink\Exception\ExpectationException;
+use Behat\Mink\Exception\ElementNotFoundException;
+use Behat\Mink\Exception\DriverException;
 
 /**
  * Step definitions and overrides to navigate through the navigation tree nodes in the Classic theme.
@@ -188,7 +188,6 @@ class behat_theme_classic_behat_navigation extends behat_navigation {
         try {
             $this->should_exist_in_current_page_administration($element, $selectortype);
         } catch (ElementNotFoundException $e) {
-
             // If an exception was thrown, it means the element does not exist, so the test is successful.
             return;
         }
@@ -239,7 +238,6 @@ class behat_theme_classic_behat_navigation extends behat_navigation {
         if ($mustexist) {
             $exception = new ElementNotFoundException($this->getSession(), 'Page administration menu');
             $this->find('xpath', $menuxpath, $exception);
-
         } else if (!$this->getSession()->getPage()->find('xpath', $menuxpath)) {
             return null;
         }
@@ -337,7 +335,7 @@ class behat_theme_classic_behat_navigation extends behat_navigation {
         if ($parentnodes) {
             // Find the section on the page (links may be repeating in different sections).
             $section = behat_context_helper::escape($parentnodes[0]);
-            $xpath .= '//div[@class=\'row\' and contains(.,'.$section.')]';
+            $xpath .= '//div[@class=\'row\' and contains(.,' . $section . ')]';
         }
 
         // Find a link and click on it.
@@ -405,8 +403,7 @@ class behat_theme_classic_behat_navigation extends behat_navigation {
             $lastnode = end($nodelist);
             $linkname = behat_context_helper::escape($lastnode);
             $link = $this->getSession()->getPage()->find('xpath', $menuxpath . '//a[contains(normalize-space(.), ' .
-                $linkname . ')]'
-            );
+                $linkname . ')]');
             if ($link) {
                 $this->execute('behat_general::i_click_on', [$link, 'NodeElement']);
                 return;
@@ -417,8 +414,7 @@ class behat_theme_classic_behat_navigation extends behat_navigation {
             // Course administration and Front page administration will have subnodes under "More...".
             $linkname = behat_context_helper::escape(get_string('morenavigationlinks'));
             $link = $this->getSession()->getPage()->find('xpath', $menuxpath . '//a[contains(normalize-space(.), ' .
-                $linkname . ')]'
-            );
+                $linkname . ')]');
             if ($link) {
                 $this->execute('behat_general::i_click_on', [$link, 'NodeElement']);
                 $this->select_on_administration_page($nodelist);
@@ -426,8 +422,10 @@ class behat_theme_classic_behat_navigation extends behat_navigation {
             }
         }
 
-        throw new ElementNotFoundException($this->getSession(),
-            'Link "' . join(' > ', $nodelist) . '" in the current page edit menu"');
+        throw new ElementNotFoundException(
+            $this->getSession(),
+            'Link "' . join(' > ', $nodelist) . '" in the current page edit menu"'
+        );
     }
 
     #[\Override]

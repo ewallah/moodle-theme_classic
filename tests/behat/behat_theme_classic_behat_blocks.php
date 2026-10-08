@@ -1,5 +1,4 @@
 <?php
-use Behat\Gherkin\Node\TableNode;
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -24,8 +23,9 @@ use Behat\Gherkin\Node\TableNode;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// NOTE: no MOODLE_INTERNAL test here, this file may be required by behat before including /config.php.
+use Behat\Gherkin\Node\TableNode;
 
+// NOTE: no MOODLE_INTERNAL test here, this file may be required by behat before including /config.php.
 require_once(__DIR__ . '/../../../../blocks/tests/behat/behat_blocks.php');
 
 /**
@@ -37,7 +37,6 @@ require_once(__DIR__ . '/../../../../blocks/tests/behat/behat_blocks.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class behat_theme_classic_behat_blocks extends behat_blocks {
-
     /**
      * Adds the selected block. Editing mode must be previously enabled.
      *
@@ -45,14 +44,16 @@ class behat_theme_classic_behat_blocks extends behat_blocks {
      * @return void
      */
     public function i_add_the_block($blockname) {
-        $this->execute('behat_forms::i_set_the_field_to',
-                array("bui_addblock", $this->escape($blockname))
+        $this->execute(
+            'behat_forms::i_set_the_field_to',
+            ["bui_addblock", $this->escape($blockname)]
         );
 
         // If we are running without javascript we need to submit the form.
         if (!$this->running_javascript()) {
-            $this->execute('behat_general::i_click_on_in_the',
-                    array(get_string('go'), "button", "#add_block", "css_element")
+            $this->execute(
+                'behat_general::i_click_on_in_the',
+                [get_string('go'), "button", "#add_block", "css_element"]
             );
         }
     }
@@ -84,8 +85,10 @@ class behat_theme_classic_behat_blocks extends behat_blocks {
         $blocktitle = $blockname === 'Text' ? '(new text block)' : $blockname;
         $this->execute('behat_blocks::i_configure_the_block', [$blocktitle]);
         $dialogname = get_string('configureblock', 'core_block', $blocktitle);
-        $this->execute('behat_forms::i_set_the_following_fields_in_container_to_these_values',
-            [$dialogname, "dialogue", $data]);
+        $this->execute(
+            'behat_forms::i_set_the_following_fields_in_container_to_these_values',
+            [$dialogname, "dialogue", $data]
+        );
         $this->execute('behat_general::i_click_on_in_the', ["Save changes", 'button', $dialogname, 'dialogue']);
     }
 

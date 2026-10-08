@@ -1,4 +1,4 @@
-@theme_classic
+@theme @theme_classic
 Feature: Select course sections using classic theme
   In order to view course sections when using the classic theme
   As a teacher

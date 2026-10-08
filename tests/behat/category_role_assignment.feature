@@ -1,4 +1,4 @@
-@core @core_course @theme_classic
+@core @core_course @theme @theme_classic
 Feature: Role assignments can be made at the category level in classic
   In order to grant a user different capabilities
   As a user

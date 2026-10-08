@@ -24,8 +24,6 @@
  */
 namespace theme_classic\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Class overriding some of the Moodle default FontAwesome icons.
  *

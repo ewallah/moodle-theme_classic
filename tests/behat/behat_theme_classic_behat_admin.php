@@ -28,8 +28,8 @@
 
 require_once(__DIR__ . '/../../../../admin/tests/behat/behat_admin.php');
 
-use Behat\Gherkin\Node\TableNode as TableNode,
-    Behat\Mink\Exception\ElementNotFoundException as ElementNotFoundException;
+use Behat\Gherkin\Node\TableNode,
+    Behat\Mink\Exception\ElementNotFoundException;
 
 /**
  * Site administration level steps definitions overrides for the Classic theme.
@@ -40,7 +40,6 @@ use Behat\Gherkin\Node\TableNode as TableNode,
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class behat_theme_classic_behat_admin extends behat_admin {
-
     /**
      * Sets the specified site settings. A table with | Setting label | value | is expected.
      *
@@ -53,7 +52,6 @@ class behat_theme_classic_behat_admin extends behat_admin {
         }
 
         foreach ($data as $label => $value) {
-
             // We expect admin block to be visible, otherwise go to homepage.
             if (!$this->getSession()->getPage()->find('css', '.block_settings')) {
                 $this->execute('behat_forms::i_am_on_homepage');
@@ -61,7 +59,8 @@ class behat_theme_classic_behat_admin extends behat_admin {
 
             // Search by label.
             $this->execute('behat_forms::i_set_the_field_to', [get_string('searchinsettings', 'admin'), $label]);
-            $this->execute("behat_general::i_click_on_in_the", [get_string('search', 'admin'), 'button', '.block_settings', 'css_element']);
+            $s = get_string('search', 'admin');
+            $this->execute("behat_general::i_click_on_in_the", [$s, 'button', '.block_settings', 'css_element']);
 
             // Admin settings does not use the same DOM structure than other moodle forms
             // but we also need to use lib/behat/form_field/* to deal with the different moodle form elements.
@@ -78,7 +77,6 @@ class behat_theme_classic_behat_admin extends behat_admin {
                         "@id=//span[contains(normalize-space(.), $label)]/preceding-sibling::label[1]/@for]";
                 $fieldnode = $this->find('xpath', $fieldxpath, $exception);
             } catch (ElementNotFoundException $e) {
-
                 // Multi element settings, interacting only the first one.
                 $fieldxpath = "//*[label[contains(., $label)]|span[contains(., $label)]]" .
                         "/ancestor::div[contains(concat(' ', normalize-space(@class), ' '), ' form-item ')]" .

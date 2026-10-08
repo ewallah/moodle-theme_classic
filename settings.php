@@ -24,7 +24,6 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-
     $settings = new theme_boost_admin_settingspage_tabs('themesettingclassic', get_string('configtitle', 'theme_classic'));
     $page = new admin_settingpage('theme_classic_general', get_string('generalsettings', 'theme_boost'));
 
@@ -36,8 +35,13 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Unaddable blocks.
-    $setting = new admin_setting_configtext('theme_classic/unaddableblocks',
-        get_string('unaddableblocks', 'theme_boost'), get_string('unaddableblocks_desc', 'theme_boost'), '', PARAM_TEXT);
+    $setting = new admin_setting_configtext(
+        'theme_classic/unaddableblocks',
+        get_string('unaddableblocks', 'theme_boost'),
+        get_string('unaddableblocks_desc', 'theme_boost'),
+        '',
+        PARAM_TEXT
+    );
     $page->add($setting);
 
     // Preset.
@@ -68,8 +72,14 @@ if ($ADMIN->fulltree) {
     $title = get_string('presetfiles', 'theme_classic');
     $description = get_string('presetfiles_desc', 'theme_classic');
 
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'preset', 0,
-        array('maxfiles' => 20, 'accepted_types' => array('.scss')));
+    $setting = new admin_setting_configstoredfile(
+        $name,
+        $title,
+        $description,
+        'preset',
+        0,
+        ['maxfiles' => 20, 'accepted_types' => ['.scss']]
+    );
     $page->add($setting);
 
     // Background image setting.
@@ -103,14 +113,24 @@ if ($ADMIN->fulltree) {
     $page = new admin_settingpage('theme_classic_advanced', get_string('advancedsettings', 'theme_boost'));
 
     // Raw SCSS to include before the content.
-    $setting = new admin_setting_scsscode('theme_classic/scsspre',
-        get_string('rawscsspre', 'theme_boost'), get_string('rawscsspre_desc', 'theme_boost'), '', PARAM_RAW);
+    $setting = new admin_setting_scsscode(
+        'theme_classic/scsspre',
+        get_string('rawscsspre', 'theme_boost'),
+        get_string('rawscsspre_desc', 'theme_boost'),
+        '',
+        PARAM_RAW
+    );
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
     // Raw SCSS to include after the content.
-    $setting = new admin_setting_scsscode('theme_classic/scss', get_string('rawscss', 'theme_boost'),
-        get_string('rawscss_desc', 'theme_boost'), '', PARAM_RAW);
+    $setting = new admin_setting_scsscode(
+        'theme_classic/scss',
+        get_string('rawscss', 'theme_boost'),
+        get_string('rawscss_desc', 'theme_boost'),
+        '',
+        PARAM_RAW
+    );
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 

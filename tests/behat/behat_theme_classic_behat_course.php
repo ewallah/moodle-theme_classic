@@ -36,7 +36,6 @@ require_once(__DIR__ . '/../../../../course/tests/behat/behat_course.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class behat_theme_classic_behat_course extends behat_course {
-
     /**
      * Go to the course participants.
      */

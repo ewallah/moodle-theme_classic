@@ -45,12 +45,16 @@ class behat_theme_classic_behat_general extends behat_general {
         try {
             $this->find('button', get_string('turneditingon'), false, false, 0);
             return true;
-        } catch (ElementNotFoundException $e) {}
+        } catch (ElementNotFoundException $e) {
+            mtrace($e->getMessage());
+        }
 
         try {
             $this->find('link', get_string('turneditingon'), false, false, 0);
             return true;
-        } catch (ElementNotFoundException $e) {}
+        } catch (ElementNotFoundException $e) {
+            mtrace($e->getMessage());
+        }
 
         return false;
     }

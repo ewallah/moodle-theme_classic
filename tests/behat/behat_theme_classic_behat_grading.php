@@ -36,7 +36,9 @@ class behat_theme_classic_behat_grading extends behat_grading {
 
         $this->execute("behat_general::i_click_on_in_the", [$this->escape($activityname), 'link', 'page', 'region']);
 
-        $this->execute('behat_navigation::i_navigate_to_in_current_page_administration',
-            get_string('gradingmanagement', 'grading'));
+        $this->execute(
+            'behat_navigation::i_navigate_to_in_current_page_administration',
+            get_string('gradingmanagement', 'grading')
+        );
     }
 }

@@ -16,6 +16,8 @@
 
 namespace theme_classic;
 
+use PHPUnit\Framework\Attributes\CoversNothing;
+
 /**
  * Unit tests for scss compilation.
  *
@@ -28,6 +30,7 @@ final class scss_test extends \advanced_testcase {
     /**
      * Test that classic can be compiled using SassC (the defacto implemention).
      */
+    #[CoversNothing]
     public function test_scss_compilation_with_sassc(): void {
         if (!defined('PHPUNIT_PATH_TO_SASSC')) {
             $this->markTestSkipped('Path to SassC not provided');

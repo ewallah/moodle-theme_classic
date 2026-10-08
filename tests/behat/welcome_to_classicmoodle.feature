@@ -1,4 +1,4 @@
-@javascript @theme_classic
+@javascript @theme @theme_classic
 Feature: Welcome message on classic
   To be welcome in moodle
   As a User

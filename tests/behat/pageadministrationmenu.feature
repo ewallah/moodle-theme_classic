@@ -1,4 +1,4 @@
-@javascript @theme_classic
+@javascript @theme @theme_classic
 Feature: Page administration menu
   To navigate in classic theme I need to use the page administration menu
 

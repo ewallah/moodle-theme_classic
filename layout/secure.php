@@ -39,7 +39,7 @@ $templatecontext = [
     'sidepostblocks' => $blockspost,
     'haspreblocks' => $hassidepre,
     'haspostblocks' => $hassidepost,
-    'bodyattributes' => $bodyattributes
+    'bodyattributes' => $bodyattributes,
 ];
 
 if (empty($PAGE->layout_options['noactivityheader'])) {
@@ -49,4 +49,3 @@ if (empty($PAGE->layout_options['noactivityheader'])) {
 }
 
 echo $OUTPUT->render_from_template('theme_classic/secure', $templatecontext);
-

@@ -1,4 +1,4 @@
-@javascript @theme_classic
+@javascript @theme @theme_classic
 Feature: Add a block using classic theme
   In order to check the blocks to display in the Add a block list for a them
   As an administrator

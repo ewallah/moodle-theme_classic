@@ -22,9 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// This line protects the file from being accessed by a URL directly.
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Returns the main SCSS content.
  *
@@ -70,7 +67,7 @@ function theme_classic_get_pre_scss($theme) {
         if (empty($value)) {
             continue;
         }
-        array_map(function($target) use (&$scss, $value) {
+        array_map(function ($target) use (&$scss, $value) {
             $scss .= '$' . $target . ': ' . $value . ";\n";
         }, (array) $targets);
     }
@@ -174,7 +171,7 @@ function theme_classic_get_precompiled_css() {
  * @param array $options
  * @return bool
  */
-function theme_classic_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+function theme_classic_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'backgroundimage' || $filearea === 'loginbackgroundimage')) {
         $theme = theme_config::load('classic');
         // By default, theme files must be cache-able by both browsers and proxies.

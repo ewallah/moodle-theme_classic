@@ -1,4 +1,4 @@
-@core @core_admin @theme_classic
+@core @core_admin @theme @theme_classic
 Feature: Select a theme in Classic theme
   In order to choose a theme
   As an admin

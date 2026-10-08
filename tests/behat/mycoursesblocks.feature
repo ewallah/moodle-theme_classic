@@ -1,4 +1,4 @@
-@javascript @theme_classic
+@javascript @theme @theme_classic
 Feature: My courses page block layout in Classic theme
   In order to have a clear and consistent view on the my courses page
   As a student

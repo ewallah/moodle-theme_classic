@@ -27,7 +27,7 @@
 
 require_once(__DIR__ . '/../../../../repository/upload/tests/behat/behat_repository_upload.php');
 
-use Behat\Mink\Exception\ExpectationException as ExpectationException;
+use Behat\Mink\Exception\ExpectationException;
 
 /**
  * Override step definitions to deal with the upload repository in the Classic theme.
@@ -38,7 +38,6 @@ use Behat\Mink\Exception\ExpectationException as ExpectationException;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class behat_theme_classic_behat_repository_upload extends behat_repository_upload {
-
     /**
      * Gets the NodeElement for filepicker of filemanager moodleform element.
      *

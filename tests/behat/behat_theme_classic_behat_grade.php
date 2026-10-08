@@ -27,7 +27,7 @@
 
 require_once(__DIR__ . '/../../../../grade/tests/behat/behat_grade.php');
 
-use Behat\Gherkin\Node\TableNode as TableNode;
+use Behat\Gherkin\Node\TableNode;
 
 /**
  * Behat grade overrides for the Classic theme.
@@ -38,7 +38,6 @@ use Behat\Gherkin\Node\TableNode as TableNode;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class behat_theme_classic_behat_grade extends behat_grade {
-
     /**
      * Navigates to the course gradebook and selects a specified item from the grade navigation tabs.
      *
@@ -48,8 +47,8 @@ class behat_theme_classic_behat_grade extends behat_grade {
         // If we are not on one of the gradebook pages already, follow "Grades" link in the navigation block.
         $xpath = '//div[contains(@class,\'grade-navigation\')]';
         if (!$this->getSession()->getPage()->findAll('xpath', $xpath)) {
-            $this->execute("behat_general::i_click_on_in_the", array(get_string('grades'), 'link',
-                    get_string('pluginname', 'block_navigation'), 'block'));
+            $this->execute("behat_general::i_click_on_in_the", [get_string('grades'), 'link',
+                    get_string('pluginname', 'block_navigation'), 'block']);
         }
 
         $this->execute('behat_forms::i_set_the_field_to', [get_string('gradebooknavigationmenu', 'grades'), $gradepath]);

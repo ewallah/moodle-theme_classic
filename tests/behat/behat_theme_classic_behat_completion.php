@@ -34,7 +34,9 @@ class behat_theme_classic_behat_completion extends behat_completion {
         $completionnode = get_string('pluginname', 'report_progress');
         $reportsnode = get_string('reports');
 
-        $this->execute("behat_navigation::i_navigate_to_in_current_page_administration",
-            $reportsnode . ' > ' . $completionnode);
+        $this->execute(
+            "behat_navigation::i_navigate_to_in_current_page_administration",
+            $reportsnode . ' > ' . $completionnode
+        );
     }
 }
