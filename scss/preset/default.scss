@@ -2,8 +2,9 @@
 // Bootstrap variables
 //
 
-// Import default boost
-@import "../../boost/scss/preset/default.scss";
+// Import design system and font-stack
+@import "../../boost/scss/design-system.scss";
+@import "../../boost/scss/moodle/font-stack.scss";
 
 // Prefix for all CSS variables
 $prefix: bs- !default;
