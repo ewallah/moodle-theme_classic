@@ -1,4 +1,4 @@
-@javascript @theme @theme_classic
+@theme @theme_classic
 Feature: Course administration menu
   To navigate in classic theme teachers need to use the course administration menu
 
